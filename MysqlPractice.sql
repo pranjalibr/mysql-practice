@@ -113,3 +113,10 @@ primary key (projectid), constraint FK_EmpProject foreign key(incharge) referenc
 );
 
 describe Project;
+
+insert into Project (
+ projectid , project_name , start_date,
+ incharge 
+)
+values(1 , "abc" , "2024-03-01"  ,1);
+select * from project;
