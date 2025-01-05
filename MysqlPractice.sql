@@ -101,3 +101,15 @@ drop primary key;
 describe employee;
 
 alter table employee modify column age int not null;
+
+alter table employee
+add primary key (empid);
+
+describe employee;
+
+create table project
+( projectid int , project_name varchar (255) , start_date date, incharge int,
+primary key (projectid), constraint FK_EmpProject foreign key(incharge) references employee (empid)
+);
+
+describe Project;
