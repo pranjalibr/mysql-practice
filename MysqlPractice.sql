@@ -17,7 +17,7 @@ select * from employee;
 delete from employee where name = "Rani";
 select * from employee;
 
-alter table employee modify column age int not null;
+-- alter table employee modify column age int not null;
 
 insert into employee
 (empid,name,salary)
@@ -100,7 +100,7 @@ drop primary key;
 
 describe employee;
 
-alter table employee modify column age int not null;
+-- alter table employee modify column age int not null;
 
 alter table employee
 add primary key (empid);
@@ -120,3 +120,85 @@ insert into Project (
 )
 values(1 , "abc" , "2024-03-01"  ,1);
 select * from project;
+
+insert into Project (
+ projectid , project_name , start_date,
+ incharge 
+)
+values(2 , "abc1" , "2024-04-01"  ,1);
+
+select * from project;
+
+insert into Project (
+ projectid , project_name , start_date
+)
+values(3, "abc2" , "2024-04-01");
+
+select * from employee;
+
+Delete from employee where empid = 1;
+
+alter table employee add constraint a1 check(age>=18);
+describe employee;
+
+insert into employee 
+(empid , name, age , salary)
+values
+(4 , "prachi" , 15 , 18000);
+
+insert into employee 
+(empid , name,  salary)
+values
+(4 , "prachi" ,  18000);
+
+-- LTER TABLE employee MODIFY age INT NULL;-- 
+
+select * from employee;
+
+alter table employee drop check a1;
+describe employee;
+
+
+insert into employee 
+(empid , name, age ,salary)
+values
+(5 , "rachi" ,10, 9000);
+select * from employee;
+
+alter table employee add constraint a1 check(age>=18);
+
+
+insert into employee 
+(empid , name, age ,salary)
+values
+(5 , "rachi" ,10, 9000);
+
+select * from employee;
+describe employee;
+
+alter table employee
+alter salary set default 10000;
+
+insert into employee 
+(empid , name, age)
+values
+(6 , "samay" ,52);
+select * from employee;
+
+alter table employee
+alter salary drop default;
+
+insert into employee 
+(empid , name, age)
+values
+(7, "nikita" ,36);
+select * from employee;
+
+alter table employee
+alter salary set default null;
+
+insert into employee 
+(empid , name, age)
+values
+(8, "abita" ,26);
+select * from employee;
