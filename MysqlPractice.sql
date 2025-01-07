@@ -95,9 +95,6 @@ values(2 , "anjali" , 21 , 22000);
 alter table employee
 drop primary key;
 
--- alter table employee
--- drop constraint pk_employee;
-
 describe employee;
 
 -- alter table employee modify column age int not null;
@@ -151,8 +148,6 @@ insert into employee
 values
 (4 , "prachi" ,  18000);
 
--- LTER TABLE employee MODIFY age INT NULL;-- 
-
 select * from employee;
 
 alter table employee drop check a1;
@@ -202,3 +197,54 @@ insert into employee
 values
 (8, "abita" ,26);
 select * from employee;
+
+alter table employee
+add department varchar (255);
+
+alter table employee
+modify column department  enum('IT' , 'Account' , 'inventory' , 'HR');
+describe employee;
+
+alter table employee
+rename column department  to dept;
+
+alter table employee
+drop column dept;
+
+insert into employee
+(empid , name , age , salary)
+values
+(9 , 'nidhi' , 23 , 25000);
+select * from employee;
+
+insert into employee
+(empid , name , age )
+values
+(10 , 'ridhi' , 23 );
+select * from employee;
+
+insert into employee
+(empid , name , age , salary)
+values
+(11 , 'radh' , 73 , 23000), (12 , "ram" ,100 , 23200);
+select * from employee;
+
+-- select query-- 
+select age , name from employee;
+select name , age from employee;
+select * from employee
+where empid = 3;
+select * from employee
+where age >50;
+select * from employee
+where age>25 and age <45;
+select * from employee
+where age>9 or age <50;
+select name from employee where age!=23;
+select name from employee where age<>23;
+select * from employee;
+select * from employee where salary between 10000 and 50000;
+select * from employee where name like 'p%';
+select * from employee where name in ('nidhi' , 'ram' , 'anjali' );
+select * from employee;
+select distinct age from employee;
