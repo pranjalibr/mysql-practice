@@ -248,3 +248,80 @@ select * from employee where name like 'p%';
 select * from employee where name in ('nidhi' , 'ram' , 'anjali' );
 select * from employee;
 select distinct age from employee;
+
+-- updatE query
+create table book
+( bookid int primary key , 
+title varchar(255),
+price float(7,2),
+publisher varchar(255)
+);
+
+insert into book
+values
+(1 , 'JAVA' , 400 , 'BNB' );
+
+select * from book;
+
+UPDATE book
+set publisher  = "PNP";
+
+insert into book
+values
+(2, 'PHP' , 300 , 'BNB' );
+
+insert into book
+values
+(3 , 'C++' , 500 , 'TATA' );
+
+insert into book
+(BOOKID , TITLE , PRICE)
+values
+(4 , 'RUBY' , 400 );
+
+UPDATE BOOK SET PUBLISHER = 'DRP'
+WHERE PUBLISHER IS NULL;
+
+UPDATE BOOK 
+SET PRICE =500
+WHERE TITLE = 'PHP';
+
+use db1;
+show tables;
+select * from project; 
+
+select * from book;
+
+delete from book where publisher = "TATA";
+
+select * from employee order by salary;
+
+select * from employee order by salary,age;
+
+select * from employee;
+select min(salary) from employee;
+select max(salary) from employee;
+select count(*) from employee;
+select count(age) from employee;
+select count(name) from employee;
+select count(*) from employee;
+select * from employee;
+select count(*) from employee where age>30;
+select count(salary) from employee where age>30;
+select * from employee;
+select sum(salary) from employee where name like '%li';
+select avg(salary) from employee where name like '%li';
+
+select * from employee where name like 'P%';
+
+select * from employee where name like 'P%a%';
+
+
+select * from employee where name like 'P_a%';
+
+select * from employee where name like '%i';
+
+select * from employee where name like '%dh%';
+select * from employee where name like '_%a';
+
+select * from employee where name like '_a%';
