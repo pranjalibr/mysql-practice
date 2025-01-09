@@ -289,15 +289,10 @@ WHERE TITLE = 'PHP';
 use db1;
 show tables;
 select * from project; 
-
 select * from book;
-
 delete from book where publisher = "TATA";
-
 select * from employee order by salary;
-
 select * from employee order by salary,age;
-
 select * from employee;
 select min(salary) from employee;
 select max(salary) from employee;
@@ -311,17 +306,141 @@ select count(salary) from employee where age>30;
 select * from employee;
 select sum(salary) from employee where name like '%li';
 select avg(salary) from employee where name like '%li';
-
 select * from employee where name like 'P%';
-
 select * from employee where name like 'P%a%';
-
-
 select * from employee where name like 'P_a%';
-
 select * from employee where name like '%i';
-
 select * from employee where name like '%dh%';
 select * from employee where name like '_%a';
-
 select * from employee where name like '_a%';
+
+
+create database db2;
+use db2;
+create table student(
+rollno int primary key,
+name varchar (255),
+email varchar(255),
+mobile varchar(15)
+);
+
+create table course
+( couseid int primary key ,
+course_name varchar(255),
+duration_in_months int);
+
+select * from student;
+
+create table batch(
+batchid int primary key,
+couseid int,
+startdate date,
+time time,
+days varchar(20),                      
+size int,
+CONSTRAINT FK_course_batch FOREIGN KEY (couseid) REFERENCES course (couseid ));
+
+create table Student_batch(
+id int primary key,  
+rollno int ,
+batchid int,
+joindate date,
+foreign key (rollno) references student (rollno),
+foreign key (batchid) references batch(batchid)
+);
+
+insert into student
+values
+(1, 'dilip', 'dilip_123@gmail.com','8899774455'),
+(2, 'anand', 'anand_123@gmail.com','9499774455'),
+(3, 'nikita', 'nijkita_123@gmail.com','9392774455'),
+(4, 'rajesh', 'rajesh_123@gmail.com','8555774455'),
+(5, 'arun', 'arun_123@gmail.com','8112174455'),
+(6, 'jai', 'jai_123@gmail.com','8822774455'),
+(7, 'aditi', 'aditi_123@gmail.com','8455778844'),
+(8, 'manish', 'manish_123@gmail.com','9764515785');
+
+
+insert into course
+values
+(1,'c',3 ),
+(2,'c++',3 ),
+(3,'Python',3 ),
+(4,'Java',4 ),
+(5,'PHP',2 ),
+(6,'HTML',1 ),
+(7,'DSA',2 );
+
+insert into batch
+values
+(1,1, '2023-5-10', '09:00:00', 'MWF',100),
+(2,2, '2023-10-10', '10:00:00', 'TTS',200),
+(3,1, '2023-02-10', '11:00:00', 'MWF',300),
+(4,3, '2023-01-10', '12:00:00', 'MWF',400);
+
+insert into  Student_batch
+values
+(1,1,1, '2023-5-10'),
+(2,2,1, '2023-5-10'),
+(3,3,1, '2023-5-10'),
+(4,1,2, '2023-10-2'),
+(5,2,3, '2024-01-21'),
+(6,4,3, '2024-01-21'),
+(7,5,3, '2024-01-22');
+
+select name , email from student ;
+select name , email from student 
+where rollno in
+(
+select rollno from student_batch where batchid=1
+);
+select * from Student_batch;
+use db1;
+alter table employee add department varchar(255);
+
+select * from employee;
+
+ update employee set department = 'account'
+ where empid =1;
+ 
+ update employee set department = 'development'
+ where empid =2;
+ 
+update employee set department = 'development'
+ where empid =3;
+ 
+ update employee set department = 'development'
+ where empid =4;
+ 
+ update employee set department = 'development'
+ where empid =5;
+ update employee set department = 'operations'
+ where empid =6;
+ 
+ update employee set department = 'operations'
+ where empid =7;
+ 
+ update employee set department = 'development'
+ where empid =8;
+ 
+ update employee set department = 'account'
+ where empid =9;
+ 
+ update employee set department = 'development'
+ where empid =10;
+ 
+ update employee set department = 'account'
+ where empid =11;
+ 
+ update employee set department = 'development'
+ where empid =12;
+
+select * from employee;
+
+select * from employee e1 where salary >
+(
+	select avg(salary) 
+    from employee e2
+    where e1.department=e2.department
+);
+
